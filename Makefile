@@ -19,7 +19,7 @@ clean:
 	docker rmi `docker images -q $(IMAGENAME):$(TAG)`
 
 run:
-	docker run --rm -it $(IMAGENAME):$(TAG) make $(RUN_ARGS)
+	docker run --rm -it $(IMAGENAME):$(TAG) $(RUN_ARGS)
 
 debug:
 	docker run --rm -it $(IMAGENAME):$(TAG) bash
