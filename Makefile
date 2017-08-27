@@ -9,17 +9,17 @@ endif
 .PHONY: image push clean run debug
 
 image:
-	docker build -t $(IMAGENAME):$(TAG) .
-	docker images $(IMAGENAME):$(TAG)
+	@docker build -t $(IMAGENAME):$(TAG) .
+	@docker images $(IMAGENAME):$(TAG)
 
 push: image
-	docker push $(IMAGENAME):$(TAG)
+	@docker push $(IMAGENAME):$(TAG)
 
 clean:
-	docker rmi `docker images -q $(IMAGENAME):$(TAG)`
+	@docker rmi `docker images -q $(IMAGENAME):$(TAG)`
 
 run:
-	docker run --rm -it $(IMAGENAME):$(TAG) $(RUN_ARGS)
+	@docker run --rm -it $(IMAGENAME):$(TAG) $(RUN_ARGS)
 
 debug:
 	docker run --rm -it $(IMAGENAME):$(TAG) bash
